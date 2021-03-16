@@ -1,0 +1,57 @@
+<html>
+<style>
+    table.purpleHorizon {
+      border: 4px solid #792396;
+      background-color: #555555;
+      width: 80%;
+      text-align: center;
+      border-collapse: collapse;
+    }
+    table.purpleHorizon td, table.purpleHorizon th {
+      border: 1px solid #555555;
+      padding: 5px 2px;
+    }
+    table.purpleHorizon tbody td {
+      font-size: 13px;
+      font-weight: bold;
+      color: #FFFFFF;
+    }
+    table.purpleHorizon tr:nth-child(even) {
+      background: #CC3BFC;
+    }
+</style>
+<article id="input">
+    <font size="8" color="green">Final test lab</font><br><br>
+    Number of rows: <input type="text" id="t1" /><br><br>
+    Number of cols: <input type="text" id="t2" /><br><br>
+    <button id="b1" onclick="generateTable()">Generate Table</button><br><br>
+</article>
+<button id="b2" onclick="addColumn()">Add Column</button>
+<button id="b3" onclick="addRow()">Add Row</button>
+<br><br>
+<table id="table" class="purpleHorizon"></table>
+<script language="javascript">
+    function generateTable(){
+        for (let i = 0; i < document.getElementById("t1").value; i++) {
+            let row = document.getElementById("table").insertRow();
+            for (let j = 0; j < document.getElementById("t2").value; j++) {
+                let cell = row.insertCell();
+                cell.innerHTML = "Row "+i+" Column "+j;
+            }
+        }
+        document.getElementById("input").remove();
+    }
+    // Add New Row
+    function addRow(){
+        let tbl = document.getElementById("table");
+        let cell = tbl.insertRow(tbl.rows.length).insertCell(0);
+        cell.innerHTML = "Cell";
+    }
+    // Add New Column
+    function addColumn(){
+        let tbl = document.getElementById("table");
+        let cell = tbl.rows[tbl.rows.length - 1].insertCell();
+        cell.innerHTML = "Cell";
+    }
+</script>
+</html>
